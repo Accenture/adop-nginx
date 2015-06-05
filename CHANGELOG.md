@@ -3,6 +3,12 @@ CHANGELOG
 
 This file is used to list changes made in each version of nginx image.
 
+2.0.16
+-----
+  robert.a.northard
+  Updated Gerrit URL to be dynamically generated based on JavaScript window.location.host DOM element.
+
+
 2.0.15
 -----
 	robert.a.northard
