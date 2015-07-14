@@ -31,6 +31,10 @@
       <!-- Latest compiled and minified JavaScript -->
       <script src="js/bootstrap.min.js"></script>
       <link rel="stylesheet" type="text/css" href="css/common.css">
+      <!-- Overides -->
+      <style type = "text/css">
+         .container { margin-left: 0; }
+      </style>
 
       <script type = "text/javascript">
          window.onload = function(){
@@ -83,8 +87,8 @@
             </div>
          </div>
       </form>
-      <h3>Environment Links</h3>
-      <ul>
+      <h3>Tool Links & Status</h3>
+      <!--<ul>-->
          <script>            
             $(function() {
                 startRefresh();
@@ -145,101 +149,109 @@
                 });
             }
          </script>
-         <div class="bs-callout bs-callout-info" id = 'jira'>
-            <li>
-               <h4>
-                  <a target = "_blank" href ="/jira">JIRA</a>
-               </h4>
-            </li>
-         </div>
-         <div class="bs-callout bs-callout-info"  id = 'adlm-confluence'>
-            <li>
-               <h4>
-                  <a target = "_blank" id ='confluence' href ="/confluence">Confluence</a>
-               </h4>
-            </li>
-         </div>
-         <div class="bs-callout bs-callout-info" id = 'jenkins'>
-            <li>
-               <h4>
-                  <a target = "_blank" href ="/jenkins">Jenkins</a>
-               </h4>
-               <ul>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/Environment%20Dashboard/">Environment Dashboard View</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="jenkins/view/Model_Office_Pipeline/">Example Pipeline</a>
-                  </li>
-               </ul>
-            </li>
-         </div>
-         <div class="bs-callout bs-callout-info" id='gerrit'>
-            <li>
-               <h4>
-                  <a target = "_blank" href ="/gerrit">Gerrit</a>
-               </h4>
-            </li>
-         </div>
-         <div class="bs-callout bs-callout-info" id='sonar'>
-            <li>
-               <h4>
-                  <a target = "_blank" href ="/sonar">Sonar</a>
-               </h4>
-            </li>
-         </div>
-         <div class="bs-callout bs-callout-info" id='elk'>
-            <li>
-               <h4>
-                  <a target = "_blank" id = 'kibana' href ="/">Kibana Dashboard (ELK)</a>
-               </h4>
-            </li>
-         </div>
-         <div class="bs-callout bs-callout-info" id='ldap-gerrit-shipyard-selenium'>
-            <li>
-               <h4>
-                  <a target = "_blank" id = 'selenium_grid' href ="/">Selenium Grid View</a>
-               </h4>
-            </li>
-         </div>
-         <div class="bs-callout bs-callout-info" id='shipyard-container'>
-            <li>
-               <h4>
-                  <a target = "_blank" id = 'shipyard' href ="/">Shipyard</a>
-               </h4>
-            </li>
-         </div>
-         <div class="bs-callout bs-callout-info" id='consul-rp'>
-            <li>
-               <h4>
-                  <a target = "_blank" id='consul' href ="/">Consul</a>
-               </h4>
-            </li>
-         </div>
-             <div class="bs-callout bs-callout-info">
-            <li>
-               <h4>
-                  <a target = "_blank" id='chef_server' href ="/">Chef Server UI</a>
-               </h4>
-            </li>
-         </div>
-      </ul>
+      <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                 <div class="bs-callout bs-callout-info" id = 'jira'>
+                    <li>
+                       <h4>
+                          <a target = "_blank" href ="/jira">JIRA</a>
+                       </h4>
+                    </li>
+                 </div>
+                 <div class="bs-callout bs-callout-info"  id = 'adlm-confluence'>
+                    <li>
+                       <h4>
+                          <a target = "_blank" id ='confluence' href ="/confluence">Confluence</a>
+                       </h4>
+                    </li>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id = 'jenkins'>
+                    <li>
+                       <h4>
+                          <a target = "_blank" href ="/jenkins">Jenkins</a>
+                       </h4>
+                       <ul>
+                          <li>
+                             <a target = "_blank" href ="/jenkins/view/Environment%20Dashboard/">Environment Dashboard</a>
+                          </li>
+                          <li>
+                             <a target = "_blank" href ="jenkins/view/Model_Office_Pipeline/">Example Pipeline</a>
+                          </li>
+                       </ul>
+                    </li>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id='gerrit'>
+                    <li>
+                       <h4>
+                          <a target = "_blank" href ="/gerrit">Gerrit</a>
+                       </h4>
+                    </li>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id='sonar'>
+                    <li>
+                       <h4>
+                          <a target = "_blank" href ="/sonar">Sonar</a>
+                       </h4>
+                    </li>
+                 </div>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                 <div class="bs-callout bs-callout-info" id='elk'>
+                    <li>
+                       <h4>
+                          <a target = "_blank" id = 'kibana' href ="/">Kibana Dashboard (ELK)</a>
+                       </h4>
+                    </li>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id='ldap-gerrit-shipyard-selenium'>
+                    <li>
+                       <h4>
+                          <a target = "_blank" id = 'selenium_grid' href ="/">Selenium Grid View</a>
+                       </h4>
+                    </li>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id='shipyard-container'>
+                    <li>
+                       <h4>
+                          <a target = "_blank" id = 'shipyard' href ="/">Shipyard</a>
+                       </h4>
+                    </li>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id='consul-rp'>
+                    <li>
+                       <h4>
+                          <a target = "_blank" id='consul' href ="/">Consul</a>
+                       </h4>
+                    </li>
+                 </div>
+                     <div class="bs-callout bs-callout-info">
+                    <li>
+                       <h4>
+                          <a target = "_blank" id='chef_server' href ="/">Chef Server UI</a>
+                       </h4>
+                    </li>
+                 </div>
+            </div>
+        </div>
+      </div>
+      <!--</ul>-->
       <br />
       <h3>Frameworks</h3>
       <br />
       <div role="tabpanel">
          <ul class="nav nav-pills nav-justified" role="tablist" id="frameworks">
-            <li role="presentation" class="active"><a href="#petclinic-tab" aria-controls="petclinic-tab" role="tab" data-toggle="tab">Petclinic</a></li>
+            <li role="presentation" class="active"><a href="#petclinic-tab" aria-controls="petclinic-tab" role="tab" data-toggle="tab">Pet Clinic</a></li>
             <li role="presentation"><a data-toggle="tab" aria-controls="hybris-tab" role="tab" data-toggle="tab" href="#hybris-tab">Hybris</a></li>
             <li role="presentation"><a data-toggle="tab" aria-controls="aowp-tab" role="tab" data-toggle="tab" href="#aowp-tab">AOWP</a></li>
          </ul>
          <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="petclinic-tab">
                <br />
-               <a target = "_blank" href ="/petclinic">Petclinic CI Environment</a> (No app deployed, to deploy follow <a target="_blank" href = "https://adlm.accenture.com/wiki/display/DOT/Deploy+Application+package">Deploy Application Package</a>)
+               <a target = "_blank" href ="/petclinic">Pet Clinic CI Environment</a> (No app deployed, to deploy follow <a target="_blank" href = "https://adlm.accenture.com/wiki/display/DOT/Deploy+Application+package">Deploy Application Package</a>)
                <ul>
                   <li>
-                     <a target = "_blank" href ="jenkins/view/Model_Office_Pipeline/">Pet clinic Pipeline</a>
+                     <a target = "_blank" href ="jenkins/view/Model_Office_Pipeline/">Pet Clinic Pipeline</a>
                   </li>
                   <li>
                      <a target = "_blank" href ="/sonar/dashboard/index/4">Sonar Report</a>
