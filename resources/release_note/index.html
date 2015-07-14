@@ -6,6 +6,22 @@
          table { width:50%; border-spacing: 1; margin:2px; }
          td, th { height: 30px; text-align: left; padding: 2px; }
          th { background: rgb(42, 56, 69);font-weight: bold; color:white; }
+         li {
+             list-style-type: none;
+         }
+
+         .bs-callout {
+           padding: 12;
+           margin: 11px 0;
+           border: 1px solid #eee;
+           border-left-width: 5px;
+           border-radius: 3px;
+         }
+
+         body > ul {
+            max-width: 500px;
+
+         }
       </style>
       <script src="js/jquery.js"></script>
       <!-- Latest compiled and minified CSS -->
@@ -15,6 +31,7 @@
       <!-- Latest compiled and minified JavaScript -->
       <script src="js/bootstrap.min.js"></script>
       <link rel="stylesheet" type="text/css" href="css/common.css">
+
       <script type = "text/javascript">
          window.onload = function(){
          document.getElementById('kibana').href = createUrl("kibana") + "//index.html#/dashboard/file/logstash.json";
@@ -24,6 +41,7 @@
          document.getElementById('hybris').href = createUrl("hybris");
          document.getElementById('phabricator').href = createUrl("phabricator");
          document.getElementById('nodeapp').href = createUrl("nodeapp");
+         document.getElementById('consul').href = createUrl("consul");
          document.getElementById('hybris_app').href = createUrl("hybris") + "ytelcoacceleratorstorefront";
          document.getElementById('hybris_cms').href = createUrl("hybris") + "cmscockpit/index.zul?persp=cmscockpit.perspective.liveedit&events=liveeditpagenavigation&live-site=8796093056040&live-catalog=8796093219417&live-page=8796094071856";
          }
@@ -31,6 +49,7 @@
          function createUrl(host){
                  return "http://"+ host + "." + window.location.host+ (window.location.host.indexOf(".xip.io") > -1 ? "" : ".xip.io/")
          }
+         
       </script>
    </head>
    <body>
@@ -66,41 +85,146 @@
       </form>
       <h3>Environment Links</h3>
       <ul>
-         <li>
-            <a target = "_blank" href ="/jira">JIRA</a>
-         </li>
-         <li>
-            <a target = "_blank" href ="/confluence">Confluence</a>
-         </li>
-         <li>
-            <a target = "_blank" href ="/jenkins">Jenkins</a>
-            <ul>
-               <li>
-                  <a target = "_blank" href ="/jenkins/view/Environment%20Dashboard/">Environment Dashboard View</a>
-               </li>
-               <li>
-                  <a target = "_blank" href ="jenkins/view/Model_Office_Pipeline/">Example Pipeline</a>
-               </li>
-            </ul>
-         </li>
-         <li>
-            <a target = "_blank" href ="/gerrit">Gerrit</a>
-         </li>
-         <li>
-            <a target = "_blank" href ="/sonar">Sonar</a>
-         </li>
-         <li>
-            <a target = "_blank" id="kibana" href ="/">Kibana Dashboard (ELK)</a>
-         </li>
-         <li>
-            <a target = "_blank" id="selenium_grid" href ="/">Selenium Grid View</a>
-         </li>
-         <li>
-            <a target = "_blank" id="chef_server" href ="/">Chef Server UI</a>
-         </li>
-         <li>
-            <a target = "_blank" id="shipyard" href ="/">Shipyard</a>
-         </li>
+         <script>            
+            $(function() {
+                startRefresh();
+            });
+
+            function getStatusClass(status){
+
+               switch(status) {
+                case "passing":
+                    return "bs-callout bs-callout-success"
+                    break;
+                case "critical":
+                    return "bs-callout bs-callout-danger"
+                    break;
+               default:
+                  return "bs-callout bs-callout-danger"
+                  break;
+               }
+            }
+            
+            function startRefresh() {
+                setTimeout(startRefresh,10000);
+                $.get(createUrl("consul") + '/v1/internal/ui/nodes', function(data) {
+                     results = {}
+                      for (var i = 0; i < data.length; i++) {
+                        checks = data[i]['Checks']
+         
+                        for (var y = 0; y < data.length; y++) {
+                           try {
+                              results[checks[y]['ServiceName']] = checks[y]['Status']
+                              }catch(err){
+
+                              }
+             
+                        
+                      };
+                     
+                        
+                      };
+                        
+                      $('#jenkins').removeClass()
+                      $('#jenkins').addClass(getStatusClass(results['jenkins'])); 
+                      $('#gerrit').removeClass()
+                      $('#gerrit').addClass(getStatusClass(results['gerrit-http'])); 
+                      $('#sonar').removeClass()
+                      $('#sonar').addClass(getStatusClass(results['sonar'])); 
+                      $('#elk').removeClass()
+                      $('#elk').addClass(getStatusClass(results['kibana']))
+                      $('#ldap-gerrit-shipyard-selenium').removeClass()
+                      $('#ldap-gerrit-shipyard-selenium').addClass(getStatusClass(results['hub'])); 
+                      $('#shipyard-container').removeClass()
+                      $('#shipyard-container').addClass(getStatusClass(results['shipyard-http'])); 
+                      $('#adlm-confluence').removeClass()
+                      $('#adlm-confluence').addClass(getStatusClass(results['confluence'])); 
+                      $('#jira').removeClass()
+                      $('#jira').addClass(getStatusClass(results['jira']));  
+                      $('#consul-rp').removeClass()
+                      $('#consul-rp').addClass(getStatusClass(results['nginx'])); 
+                    
+                });
+            }
+         </script>
+         <div class="bs-callout bs-callout-info" id = 'jira'>
+            <li>
+               <h4>
+                  <a target = "_blank" href ="/jira">JIRA</a>
+               </h4>
+            </li>
+         </div>
+         <div class="bs-callout bs-callout-info"  id = 'adlm-confluence'>
+            <li>
+               <h4>
+                  <a target = "_blank" id ='confluence' href ="/confluence">Confluence</a>
+               </h4>
+            </li>
+         </div>
+         <div class="bs-callout bs-callout-info" id = 'jenkins'>
+            <li>
+               <h4>
+                  <a target = "_blank" href ="/jenkins">Jenkins</a>
+               </h4>
+               <ul>
+                  <li>
+                     <a target = "_blank" href ="/jenkins/view/Environment%20Dashboard/">Environment Dashboard View</a>
+                  </li>
+                  <li>
+                     <a target = "_blank" href ="jenkins/view/Model_Office_Pipeline/">Example Pipeline</a>
+                  </li>
+               </ul>
+            </li>
+         </div>
+         <div class="bs-callout bs-callout-info" id='gerrit'>
+            <li>
+               <h4>
+                  <a target = "_blank" href ="/gerrit">Gerrit</a>
+               </h4>
+            </li>
+         </div>
+         <div class="bs-callout bs-callout-info" id='sonar'>
+            <li>
+               <h4>
+                  <a target = "_blank" href ="/sonar">Sonar</a>
+               </h4>
+            </li>
+         </div>
+         <div class="bs-callout bs-callout-info" id='elk'>
+            <li>
+               <h4>
+                  <a target = "_blank" id = 'kibana' href ="/">Kibana Dashboard (ELK)</a>
+               </h4>
+            </li>
+         </div>
+         <div class="bs-callout bs-callout-info" id='ldap-gerrit-shipyard-selenium'>
+            <li>
+               <h4>
+                  <a target = "_blank" id = 'selenium_grid' href ="/">Selenium Grid View</a>
+               </h4>
+            </li>
+         </div>
+         <div class="bs-callout bs-callout-info" id='shipyard-container'>
+            <li>
+               <h4>
+                  <a target = "_blank" id = 'shipyard' href ="/">Shipyard</a>
+               </h4>
+            </li>
+         </div>
+         <div class="bs-callout bs-callout-info" id='consul-rp'>
+            <li>
+               <h4>
+                  <a target = "_blank" id='consul' href ="/">Consul</a>
+               </h4>
+            </li>
+         </div>
+             <div class="bs-callout bs-callout-info">
+            <li>
+               <h4>
+                  <a target = "_blank" id='chef_server' href ="/">Chef Server UI</a>
+               </h4>
+            </li>
+         </div>
       </ul>
       <br />
       <h3>Frameworks</h3>
@@ -152,25 +276,27 @@
                </ul>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="aowp-tab">
-	      <form class="form-horizontal">
-         <div class="form-group">
-            <br />
-            <label class="col-sm-1 control-label">Git URL</label>
-            <div class="col-sm-10">
-               <p class="form-control-static">git clone http://<script>document.write(window.location.host)</script>/gerrit/node-questionapp</p>
-            </div>
-         </div>
-      </form>
-                  <ul>
-                     <li>
-			<a target = "_blank" id="nodeapp" href ="/">AOWP CI Environment</a>
-                     </li>
-                     <li>
-                        <a target = "_blank" href ="/jenkins/view/AOWP_pipeline/">Jenkins AOWP Pipeline</a>  
-                     </li>
-                     <li>
-                        <a target = "_blank" href ="/jenkins/view/AOWP_pipeline/job/codeanalysis-nodeapp/HTML_Report/?">Code analysis report</a>
-                     </li>
+               <form class="form-horizontal">
+                  <div class="form-group">
+                     <br />
+                     <label class="col-sm-1 control-label">Git URL</label>
+                     <div class="col-sm-10">
+                        <p class="form-control-static">
+                           git clone http://<script>document.write(window.location.host)</script>/gerrit/node-questionapp
+                        </p>
+                     </div>
+                  </div>
+               </form>
+               <ul>
+                  <li>
+                     <a target = "_blank" id="nodeapp" href ="/">AOWP CI Environment</a>
+                  </li>
+                  <li>
+                     <a target = "_blank" href ="/jenkins/view/AOWP_pipeline/">Jenkins AOWP Pipeline</a>  
+                  </li>
+                  <li>
+                     <a target = "_blank" href ="/jenkins/view/AOWP_pipeline/job/codeanalysis-nodeapp/HTML_Report/?">Code analysis report</a>
+                  </li>
                   <li>
                      <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_automation_Demo/36/artifact/test-36-report.html">OWASP ZAP Report</a>
                   </li>
@@ -182,9 +308,9 @@
                   <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_performance_Demo/18/gatling/report/recordedsimulation/source/">Perfomance Test Report</a>
                   </li>
                   <li>
-                      <a target = "_blank" id="phabricator" href ="/">Phabricator code review</a>
+                     <a target = "_blank" id="phabricator" href ="/">Phabricator code review</a>
                   </li>
-                  </ul>
+               </ul>
             </div>
          </div>
       </div>
