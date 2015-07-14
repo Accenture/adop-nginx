@@ -90,19 +90,12 @@
                 startRefresh();
             });
 
-            function getStatusClass(status){
+            function getStatusClass(status,node_status){
 
-               switch(status) {
-                case "passing":
-                    return "bs-callout bs-callout-success"
-                    break;
-                case "critical":
-                    return "bs-callout bs-callout-danger"
-                    break;
-               default:
-                  return "bs-callout bs-callout-danger"
-                  break;
-               }
+              if (status === "passing" && node_status === "passing")
+                  return "bs-callout bs-callout-success"
+              else
+                 return "bs-callout bs-callout-danger"
             }
             
             function startRefresh() {
@@ -114,35 +107,40 @@
          
                         for (var y = 0; y < data.length; y++) {
                            try {
-                              results[checks[y]['ServiceName']] = checks[y]['Status']
+                              serviceName = checks[y]['ServiceName']
+                              
+                              if (serviceName === "") {
+                                console.log(data)
+                                  serviceName += data[i]['Node'] + '-serf'
+                              }
+
+                              results[serviceName] = checks[y]['Status'] 
                               }catch(err){
 
                               }
-             
-                        
+                        };
                       };
-                     
-                        
-                      };
-                        
+
+                      console.log(results)
+
                       $('#jenkins').removeClass()
-                      $('#jenkins').addClass(getStatusClass(results['jenkins'])); 
+                      $('#jenkins').addClass(getStatusClass(results['jenkins'], results['ci-serf'])); 
                       $('#gerrit').removeClass()
-                      $('#gerrit').addClass(getStatusClass(results['gerrit-http'])); 
+                      $('#gerrit').addClass(getStatusClass(results['gerrit-http'], results['ldap-gerrit-shipyard-selenium-serf'])); 
                       $('#sonar').removeClass()
-                      $('#sonar').addClass(getStatusClass(results['sonar'])); 
+                      $('#sonar').addClass(getStatusClass(results['sonar'], results['ci-serf'])); 
                       $('#elk').removeClass()
-                      $('#elk').addClass(getStatusClass(results['kibana']))
+                      $('#elk').addClass(getStatusClass(results['kibana'], results['elk-serf']))
                       $('#ldap-gerrit-shipyard-selenium').removeClass()
-                      $('#ldap-gerrit-shipyard-selenium').addClass(getStatusClass(results['hub'])); 
+                      $('#ldap-gerrit-shipyard-selenium').addClass(getStatusClass(results['hub'],results['ldap-gerrit-shipyard-selenium-serf'] )); 
                       $('#shipyard-container').removeClass()
-                      $('#shipyard-container').addClass(getStatusClass(results['shipyard-http'])); 
+                      $('#shipyard-container').addClass(getStatusClass(results['shipyard-http'], results['ldap-gerrit-shipyard-selenium-serf'])); 
                       $('#adlm-confluence').removeClass()
-                      $('#adlm-confluence').addClass(getStatusClass(results['confluence'])); 
+                      $('#adlm-confluence').addClass(getStatusClass(results['confluence'], results['adlm-confluence-serf'])); 
                       $('#jira').removeClass()
-                      $('#jira').addClass(getStatusClass(results['jira']));  
+                      $('#jira').addClass(getStatusClass(results['jira'], results['adlm-jira-serf']));  
                       $('#consul-rp').removeClass()
-                      $('#consul-rp').addClass(getStatusClass(results['nginx'])); 
+                      $('#consul-rp').addClass(getStatusClass(results['nginx'], results['reverse-proxy-serf'])); 
                     
                 });
             }
