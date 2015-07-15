@@ -6,6 +6,9 @@
          table { width:50%; border-spacing: 1; margin:2px; }
          td, th { height: 30px; text-align: left; padding: 2px; }
          th { background: rgb(42, 56, 69);font-weight: bold; color:white; }
+         li {
+             list-style-type: none;
+         }
       </style>
       <script src="js/jquery.js"></script>
       <!-- Latest compiled and minified CSS -->
@@ -15,6 +18,13 @@
       <!-- Latest compiled and minified JavaScript -->
       <script src="js/bootstrap.min.js"></script>
       <link rel="stylesheet" type="text/css" href="css/common.css">
+      <!-- Overides -->
+      <style type = "text/css">
+         .container { margin-left: 0; }
+         
+         .bs-callout { padding: 10px; margin: 10px; }
+      </style>
+
       <script type = "text/javascript">
          window.onload = function(){
          document.getElementById('kibana').href = createUrl("kibana") + "//index.html#/dashboard/file/logstash.json";
@@ -24,6 +34,7 @@
          document.getElementById('hybris').href = createUrl("hybris");
          document.getElementById('phabricator').href = createUrl("phabricator");
          document.getElementById('nodeapp').href = createUrl("nodeapp");
+         document.getElementById('consul').href = createUrl("consul");
          document.getElementById('hybris_app').href = createUrl("hybris") + "ytelcoacceleratorstorefront";
          document.getElementById('hybris_cms').href = createUrl("hybris") + "cmscockpit/index.zul?persp=cmscockpit.perspective.liveedit&events=liveeditpagenavigation&live-site=8796093056040&live-catalog=8796093219417&live-page=8796094071856";
          }
@@ -31,6 +42,7 @@
          function createUrl(host){
                  return "http://"+ host + "." + window.location.host+ (window.location.host.indexOf(".xip.io") > -1 ? "" : ".xip.io/")
          }
+         
       </script>
    </head>
    <body>
@@ -64,60 +76,146 @@
             </div>
          </div>
       </form>
-      <h3>Environment Links</h3>
-      <ul>
-         <li>
-            <a target = "_blank" href ="/jira">JIRA</a>
-         </li>
-         <li>
-            <a target = "_blank" href ="/confluence">Confluence</a>
-         </li>
-         <li>
-            <a target = "_blank" href ="/jenkins">Jenkins</a>
-            <ul>
-               <li>
-                  <a target = "_blank" href ="/jenkins/view/Environment%20Dashboard/">Environment Dashboard View</a>
-               </li>
-               <li>
-                  <a target = "_blank" href ="jenkins/view/Model_Office_Pipeline/">Example Pipeline</a>
-               </li>
-            </ul>
-         </li>
-         <li>
-            <a target = "_blank" href ="/gerrit">Gerrit</a>
-         </li>
-         <li>
-            <a target = "_blank" href ="/sonar">Sonar</a>
-         </li>
-         <li>
-            <a target = "_blank" id="kibana" href ="/">Kibana Dashboard (ELK)</a>
-         </li>
-         <li>
-            <a target = "_blank" id="selenium_grid" href ="/">Selenium Grid View</a>
-         </li>
-         <li>
-            <a target = "_blank" id="chef_server" href ="/">Chef Server UI</a>
-         </li>
-         <li>
-            <a target = "_blank" id="shipyard" href ="/">Shipyard</a>
-         </li>
-      </ul>
+      <h3>Tool Links & Status</h3>
+      <script>            
+         $(function() {
+             startRefresh();
+         });
+
+         function getStatusClass(status,node_status){
+
+           if (status === "passing" && node_status === "passing")
+               return "bs-callout bs-callout-success"
+           else
+              return "bs-callout bs-callout-danger"
+         }
+
+         function startRefresh() {
+             setTimeout(startRefresh,10000);
+             $.get(createUrl("consul") + '/v1/internal/ui/nodes', function(data) {
+                  results = {}
+                   for (var i = 0; i < data.length; i++) {
+                     checks = data[i]['Checks']
+
+                     for (var y = 0; y < data.length; y++) {
+                        try {
+                           serviceName = checks[y]['ServiceName']
+                           if (serviceName === "") {
+                               serviceName += data[i]['Node'] + '-serf'
+                           }
+
+                           results[serviceName] = checks[y]['Status'] 
+                           }catch(err){
+
+                           }
+                     };
+                   };
+
+                   $('#jenkins').removeClass()
+                   $('#jenkins').addClass(getStatusClass(results['jenkins'], results['ci-serf'])); 
+                   $('#gerrit').removeClass()
+                   $('#gerrit').addClass(getStatusClass(results['gerrit-http'], results['ldap-gerrit-shipyard-selenium-serf']));
+                   $('#sonar').removeClass()
+                   $('#sonar').addClass(getStatusClass(results['sonar'], results['ci-serf']));
+                   $('#elk').removeClass()
+                   $('#elk').addClass(getStatusClass(results['kibana'], results['elk-serf']))
+                   $('#ldap-gerrit-shipyard-selenium').removeClass()
+                   $('#ldap-gerrit-shipyard-selenium').addClass(getStatusClass(results['hub'],results['ldap-gerrit-shipyard-selenium-serf'] ));
+                   $('#shipyard-container').removeClass()
+                   $('#shipyard-container').addClass(getStatusClass(results['shipyard-http'], results['ldap-gerrit-shipyard-selenium-serf']));
+                   $('#adlm-confluence').removeClass()
+                   $('#adlm-confluence').addClass(getStatusClass(results['confluence'], results['adlm-confluence-serf']));
+                   $('#jira').removeClass()
+                   $('#jira').addClass(getStatusClass(results['jira'], results['adlm-jira-serf']));
+                   $('#consul-rp').removeClass()
+                   $('#consul-rp').addClass(getStatusClass(results['nginx'], results['reverse-proxy-serf']));
+
+             });
+         }
+      </script>
+      <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                 <div class="bs-callout bs-callout-info" id = 'jira'>
+                   <h4>
+                      <a target = "_blank" href ="/jira">JIRA</a>
+                   </h4>
+                 </div>
+                 <div class="bs-callout bs-callout-info"  id = 'adlm-confluence'>
+                   <h4>
+                      <a target = "_blank" id ='confluence' href ="/confluence">Confluence</a>
+                   </h4>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id = 'jenkins'>
+                   <h4>
+                      <a target = "_blank" href ="/jenkins">Jenkins</a>
+                   </h4>
+                   <ul>
+                      <li>
+                         <a target = "_blank" href ="/jenkins/view/Environment%20Dashboard/">Environment Dashboard</a>
+                      </li>
+                      <li>
+                         <a target = "_blank" href ="jenkins/view/Model_Office_Pipeline/">Example Pipeline</a>
+                      </li>
+                   </ul>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id='gerrit'>
+                   <h4>
+                      <a target = "_blank" href ="/gerrit">Gerrit</a>
+                   </h4>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id='sonar'>
+                   <h4>
+                      <a target = "_blank" href ="/sonar">Sonar</a>
+                   </h4>
+                 </div>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                 <div class="bs-callout bs-callout-info" id='elk'>
+                   <h4>
+                      <a target = "_blank" id = 'kibana' href ="/">Kibana Dashboard (ELK)</a>
+                   </h4>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id='ldap-gerrit-shipyard-selenium'>
+                   <h4>
+                      <a target = "_blank" id = 'selenium_grid' href ="/">Selenium Grid View</a>
+                   </h4>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id='shipyard-container'>
+                   <h4>
+                      <a target = "_blank" id = 'shipyard' href ="/">Shipyard</a>
+                   </h4>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id='consul-rp'>
+                   <h4>
+                      <a target = "_blank" id='consul' href ="/">Consul</a>
+                   </h4>
+                 </div>
+                 <div class="bs-callout bs-callout-info">
+                   <h4>
+                      <a target = "_blank" id='chef_server' href ="/">Chef Server UI</a>
+                   </h4>
+                 </div>
+            </div>
+        </div>
+      </div>
+      <!--</ul>-->
       <br />
       <h3>Frameworks</h3>
       <br />
       <div role="tabpanel">
          <ul class="nav nav-pills nav-justified" role="tablist" id="frameworks">
-            <li role="presentation" class="active"><a href="#petclinic-tab" aria-controls="petclinic-tab" role="tab" data-toggle="tab">Petclinic</a></li>
+            <li role="presentation" class="active"><a href="#petclinic-tab" aria-controls="petclinic-tab" role="tab" data-toggle="tab">Pet Clinic</a></li>
             <li role="presentation"><a data-toggle="tab" aria-controls="hybris-tab" role="tab" data-toggle="tab" href="#hybris-tab">Hybris</a></li>
             <li role="presentation"><a data-toggle="tab" aria-controls="aowp-tab" role="tab" data-toggle="tab" href="#aowp-tab">AOWP</a></li>
          </ul>
          <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="petclinic-tab">
                <br />
-               <a target = "_blank" href ="/petclinic">Petclinic CI Environment</a> (No app deployed, to deploy follow <a target="_blank" href = "https://adlm.accenture.com/wiki/display/DOT/Deploy+Application+package">Deploy Application Package</a>)
+               <a target = "_blank" href ="/petclinic">Pet Clinic CI Environment</a> (No app deployed, to deploy follow <a target="_blank" href = "https://adlm.accenture.com/wiki/display/DOT/Deploy+Application+package">Deploy Application Package</a>)
                <ul>
                   <li>
-                     <a target = "_blank" href ="jenkins/view/Model_Office_Pipeline/">Pet clinic Pipeline</a>
+                     <a target = "_blank" href ="jenkins/view/Model_Office_Pipeline/">Pet Clinic Pipeline</a>
                   </li>
                   <li>
                      <a target = "_blank" href ="/sonar/dashboard/index/4">Sonar Report</a>
@@ -152,25 +250,27 @@
                </ul>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="aowp-tab">
-	      <form class="form-horizontal">
-         <div class="form-group">
-            <br />
-            <label class="col-sm-1 control-label">Git URL</label>
-            <div class="col-sm-10">
-               <p class="form-control-static">git clone http://<script>document.write(window.location.host)</script>/gerrit/node-questionapp</p>
-            </div>
-         </div>
-      </form>
-                  <ul>
-                     <li>
-			<a target = "_blank" id="nodeapp" href ="/">AOWP CI Environment</a>
-                     </li>
-                     <li>
-                        <a target = "_blank" href ="/jenkins/view/AOWP_pipeline/">Jenkins AOWP Pipeline</a>  
-                     </li>
-                     <li>
-                        <a target = "_blank" href ="/jenkins/view/AOWP_pipeline/job/codeanalysis-nodeapp/HTML_Report/?">Code analysis report</a>
-                     </li>
+               <form class="form-horizontal">
+                  <div class="form-group">
+                     <br />
+                     <label class="col-sm-1 control-label">Git URL</label>
+                     <div class="col-sm-10">
+                        <p class="form-control-static">
+                           git clone http://<script>document.write(window.location.host)</script>/gerrit/node-questionapp
+                        </p>
+                     </div>
+                  </div>
+               </form>
+               <ul>
+                  <li>
+                     <a target = "_blank" id="nodeapp" href ="/">AOWP CI Environment</a>
+                  </li>
+                  <li>
+                     <a target = "_blank" href ="/jenkins/view/AOWP_pipeline/">Jenkins AOWP Pipeline</a>  
+                  </li>
+                  <li>
+                     <a target = "_blank" href ="/jenkins/view/AOWP_pipeline/job/codeanalysis-nodeapp/HTML_Report/?">Code analysis report</a>
+                  </li>
                   <li>
                      <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_automation_Demo/36/artifact/test-36-report.html">OWASP ZAP Report</a>
                   </li>
@@ -182,9 +282,9 @@
                   <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_performance_Demo/18/gatling/report/recordedsimulation/source/">Perfomance Test Report</a>
                   </li>
                   <li>
-                      <a target = "_blank" id="phabricator" href ="/">Phabricator code review</a>
+                     <a target = "_blank" id="phabricator" href ="/">Phabricator code review</a>
                   </li>
-                  </ul>
+               </ul>
             </div>
          </div>
       </div>
