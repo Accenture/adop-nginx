@@ -114,7 +114,7 @@
                    $('#jenkins').removeClass()
                    $('#jenkins').addClass(getStatusClass(results['jenkins'], results['ci-serf'])); 
                    $('#gerrit').removeClass()
-                   $('#gerrit').addClass(getStatusClass(results['gerrit-http'], results['ldap-gerrit-shipyard-selenium-serf']));
+                   $('#gerrit').addClass(getStatusClass(results['gerrit'], results['ldap-gerrit-shipyard-selenium-serf']));
                    $('#sonar').removeClass()
                    $('#sonar').addClass(getStatusClass(results['sonar'], results['ci-serf']));
                    $('#elk').removeClass()
@@ -122,7 +122,7 @@
                    $('#ldap-gerrit-shipyard-selenium').removeClass()
                    $('#ldap-gerrit-shipyard-selenium').addClass(getStatusClass(results['hub'],results['ldap-gerrit-shipyard-selenium-serf'] ));
                    $('#shipyard-container').removeClass()
-                   $('#shipyard-container').addClass(getStatusClass(results['shipyard-http'], results['ldap-gerrit-shipyard-selenium-serf']));
+                   $('#shipyard-container').addClass(getStatusClass(results['shipyard'], results['ldap-gerrit-shipyard-selenium-serf']));
                    $('#adlm-confluence').removeClass()
                    $('#adlm-confluence').addClass(getStatusClass(results['confluence'], results['adlm-confluence-serf']));
                    $('#jira').removeClass()
