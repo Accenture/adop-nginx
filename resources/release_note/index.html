@@ -37,6 +37,7 @@
          document.getElementById('consul').href = createUrl("consul");
          document.getElementById('hybris_app').href = createUrl("hybris") + "ytelcoacceleratorstorefront";
          document.getElementById('hybris_cms').href = createUrl("hybris") + "cmscockpit/index.zul?persp=cmscockpit.perspective.liveedit&events=liveeditpagenavigation&live-site=8796093056040&live-catalog=8796093219417&live-page=8796094071856";
+         document.getElementById('nexus').href = createUrl("nexus");
          }
          
          function createUrl(host){
@@ -129,7 +130,8 @@
                    $('#jira').addClass(getStatusClass(results['jira'], results['adlm-jira-serf']));
                    $('#consul-rp').removeClass()
                    $('#consul-rp').addClass(getStatusClass(results['nginx'], results['reverse-proxy-serf']));
-
+                   $('#nexus').removeClass()
+                   $('#nexus').addClass(getStatusClass(results['nexus'], results['nexus-serf']));
              });
          }
       </script>
@@ -139,6 +141,11 @@
                  <div class="bs-callout bs-callout-info" id = 'jira'>
                    <h4>
                       <a target = "_blank" href ="/jira">JIRA</a>
+                   </h4>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id = 'nexus'>
+                   <h4>
+                      <a target = "_blank" href ="/">Nexus</a>
                    </h4>
                  </div>
                  <div class="bs-callout bs-callout-info"  id = 'adlm-confluence'>
