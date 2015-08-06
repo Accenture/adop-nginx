@@ -130,8 +130,8 @@
                    $('#jira').addClass(getStatusClass(results['jira'], results['adlm-jira-serf']));
                    $('#consul-rp').removeClass()
                    $('#consul-rp').addClass(getStatusClass(results['nginx'], results['reverse-proxy-serf']));
-                   $('#nexus').removeClass()
-                   $('#nexus').addClass(getStatusClass(results['nexus'], results['nexus-serf']));
+                   $('#artifacts-nexus').removeClass()
+                   $('#artifacts-nexus').addClass(getStatusClass(results['nexus'], results['nexus-serf']));
              });
          }
       </script>
@@ -143,7 +143,7 @@
                       <a target = "_blank" href ="/jira">JIRA</a>
                    </h4>
                  </div>
-                 <div class="bs-callout bs-callout-info" id = 'nexus'>
+                 <div class="bs-callout bs-callout-info" id = 'artifacts-nexus'>
                    <h4>
                       <a target = "_blank" id='nexus' href ="/">Nexus</a>
                    </h4>
