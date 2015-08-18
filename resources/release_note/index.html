@@ -32,8 +32,6 @@
          document.getElementById('selenium_grid').href = createUrl("selenium") +"//grid/console";
          document.getElementById('chef_server').href = createUrl("chefserver");
          document.getElementById('hybris').href = createUrl("hybris");
-         document.getElementById('phabricator').href = createUrl("phabricator");
-         document.getElementById('nodeapp').href = createUrl("nodeapp");
          document.getElementById('consul').href = createUrl("consul");
          document.getElementById('hybris_app').href = createUrl("hybris") + "ytelcoacceleratorstorefront";
          document.getElementById('hybris_cms').href = createUrl("hybris") + "cmscockpit/index.zul?persp=cmscockpit.perspective.liveedit&events=liveeditpagenavigation&live-site=8796093056040&live-catalog=8796093219417&live-page=8796094071856";
@@ -214,7 +212,6 @@
          <ul class="nav nav-pills nav-justified" role="tablist" id="frameworks">
             <li role="presentation" class="active"><a href="#petclinic-tab" aria-controls="petclinic-tab" role="tab" data-toggle="tab">Pet Clinic</a></li>
             <li role="presentation"><a data-toggle="tab" aria-controls="hybris-tab" role="tab" data-toggle="tab" href="#hybris-tab">Hybris</a></li>
-            <li role="presentation"><a data-toggle="tab" aria-controls="aowp-tab" role="tab" data-toggle="tab" href="#aowp-tab">AOWP</a></li>
          </ul>
          <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="petclinic-tab">
@@ -253,43 +250,6 @@
                   </li>
                   <li>
                      <a target = "_blank" href ="/sonar/dashboard/index/208">Sonar Report</a>
-                  </li>
-               </ul>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="aowp-tab">
-               <form class="form-horizontal">
-                  <div class="form-group">
-                     <br />
-                     <label class="col-sm-1 control-label">Git URL</label>
-                     <div class="col-sm-10">
-                        <p class="form-control-static">
-                           git clone http://<script>document.write(window.location.host)</script>/gerrit/node-questionapp
-                        </p>
-                     </div>
-                  </div>
-               </form>
-               <ul>
-                  <li>
-                     <a target = "_blank" id="nodeapp" href ="/">AOWP CI Environment</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/AOWP_pipeline/">Jenkins AOWP Pipeline</a>  
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/AOWP_pipeline/job/codeanalysis-nodeapp/HTML_Report/?">Code analysis report</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_automation_Demo/36/artifact/test-36-report.html">OWASP ZAP Report</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_automation_Demo/cucumber-html-reports/">
-                        Cucumber Report</a
-                  </li>
-                  <li>
-                  <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_performance_Demo/18/gatling/report/recordedsimulation/source/">Perfomance Test Report</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" id="phabricator" href ="/">Phabricator code review</a>
                   </li>
                </ul>
             </div>
