@@ -30,7 +30,6 @@
          document.getElementById('kibana').href = createUrl("kibana") + "//index.html#/dashboard/file/logstash.json";
          document.getElementById('shipyard').href = createUrl("shipyard");
          document.getElementById('selenium_grid').href = createUrl("selenium") +"//grid/console";
-         document.getElementById('chef_server').href = createUrl("chefserver");
          document.getElementById('hybris').href = createUrl("hybris");
          document.getElementById('consul').href = createUrl("consul");
          document.getElementById('hybris_app').href = createUrl("hybris") + "ytelcoacceleratorstorefront";
@@ -196,11 +195,6 @@
                       <a target = "_blank" id='consul' href ="/">Consul</a>
                    </h4>
                  </div>
-                 <div class="bs-callout bs-callout-info">
-                   <h4>
-                      <a target = "_blank" id='chef_server' href ="/">Chef Server UI</a>
-                   </h4>
-                 </div>
             </div>
         </div>
       </div>
@@ -210,33 +204,10 @@
       <br />
       <div role="tabpanel">
          <ul class="nav nav-pills nav-justified" role="tablist" id="frameworks">
-            <li role="presentation" class="active"><a href="#petclinic-tab" aria-controls="petclinic-tab" role="tab" data-toggle="tab">Pet Clinic</a></li>
-            <li role="presentation"><a data-toggle="tab" aria-controls="hybris-tab" role="tab" data-toggle="tab" href="#hybris-tab">Hybris</a></li>
+			<li role="presentation"><a data-toggle="tab" aria-controls="hybris-tab" role="tab" data-toggle="tab" href="#hybris-tab">Hybris</a></li>
          </ul>
          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade in active" id="petclinic-tab">
-               <br />
-               <a target = "_blank" href ="/petclinic">Pet Clinic CI Environment</a> (No app deployed, to deploy follow <a target="_blank" href = "https://adlm.accenture.com/wiki/display/DOT/Deploy+Application+package">Deploy Application Package</a>)
-               <ul>
-                  <li>
-                     <a target = "_blank" href ="jenkins/view/Model_Office_Pipeline/">Pet Clinic Pipeline</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/sonar/dashboard/index/4">Sonar Report</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_automation_Demo/36/artifact/test-36-report.html">OWASP ZAP Report</a>  
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_automation_Demo/cucumber-html-reports/">
-                        Cucumber Report</a
-                  </li>
-                  <li>
-                  <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_performance_Demo/18/gatling/report/recordedsimulation/source/">Perfomance Test Report</a>
-                  </li>
-               </ul>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="hybris-tab">
+           <div role="tabpanel" class="tab-pane fade" id="hybris-tab">
                <br />
                <ul>
                   <li>
