@@ -129,6 +129,8 @@
                    $('#jira').addClass(getStatusClass(results['jira'], results['adlm-jira-serf']));
                    $('#consul-rp').removeClass()
                    $('#consul-rp').addClass(getStatusClass(results['nginx'], results['reverse-proxy-serf']));
+                   $('#sensu').removeClass()
+                   $('#sensu').addClass(getStatusClass(results['sensu']));
 
              });
          }
@@ -194,6 +196,11 @@
                  <div class="bs-callout bs-callout-info">
                    <h4>
                       <a target = "_blank" id='chef_server' href ="/">Chef Server UI</a>
+                   </h4>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id="sensu">
+                   <h4>
+                      <a target = "_blank" id='sensu_dashboard' href ="/sensu">Sensu Dashboard</a>
                    </h4>
                  </div>
             </div>
