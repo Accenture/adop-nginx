@@ -30,14 +30,12 @@
          document.getElementById('kibana').href = createUrl("kibana") + "//index.html#/dashboard/file/logstash.json";
          document.getElementById('shipyard').href = createUrl("shipyard");
          document.getElementById('selenium_grid').href = createUrl("selenium") +"//grid/console";
-         document.getElementById('chef_server').href = createUrl("chefserver");
          document.getElementById('hybris').href = createUrl("hybris");
-         document.getElementById('phabricator').href = createUrl("phabricator");
-         document.getElementById('nodeapp').href = createUrl("nodeapp");
          document.getElementById('consul').href = createUrl("consul");
          document.getElementById('hybris_app').href = createUrl("hybris") + "ytelcoacceleratorstorefront";
          document.getElementById('hybris_cms').href = createUrl("hybris") + "cmscockpit/index.zul?persp=cmscockpit.perspective.liveedit&events=liveeditpagenavigation&live-site=8796093056040&live-catalog=8796093219417&live-page=8796094071856";
          document.getElementById('sensu_dashboard').href = createUrl("sensu");
+         document.getElementById('nexus').href = createUrl("nexus");
          }
          
          function createUrl(host){
@@ -53,18 +51,18 @@
          <h4>Welcome to your own dedicated Continuous Delivery platform.</h4>
          <br />
          This can be used for demos, training, and starting real projects.<br />
-         Please see the <a target="_blank" href="https://adlm.accenture.com/wiki/pages/viewpage.action?pageId=148898151">Frequently Demoed Features</a> wiki page for example ADOP use cases.<br>
+         Please see the <a target="_blank" href="https://alm.accenture.com/wiki/pages/viewpage.action?pageId=148898151">Frequently Demoed Features</a> wiki page for example ADOP use cases.<br>
          Please use <a target='_blank' href="http://www.google.com/chrome/">Google Chrome </a>or <a target='_blank' href="https://www.mozilla.org/en-GB/firefox/new/">Firefox </a>when navigating the wiki pages and performing the demo(s) as Internet Explorer has performance issues.
       </div>
       <h3>Getting Started</h3>
       <blockquote>
-         <a target="_blank" href="https://adlm.accenture.com/wiki/display/DOT/Accenture+DevOps+Platform">ADOP Overview</a>
+         <a target="_blank" href="https://alm.accenture.com/wiki/display/DOT/Accenture+DevOps+Platform">ADOP Overview</a>
          <footer>An overview of your Accenture DevOps Platform (ADOP) environment.</footer>
          <br />
-         <a target="_blank" href="https://adlm.accenture.com/wiki/display/DOT/Architecture">ADOP Architecture</a>
+         <a target="_blank" href="https://alm.accenture.com/wiki/display/DOT/Architecture">ADOP Architecture</a>
          <footer>Your ADOP offices architecture overview.</footer>
          <br />
-         <a target="_blank" href="https://adlm.accenture.com/wiki/pages/viewpage.action?pageId=148898151">Frequently Demoed Features</a>
+         <a target="_blank" href="https://alm.accenture.com/wiki/pages/viewpage.action?pageId=148898151">Frequently Demoed Features</a>
          <footer>A link to example scenarios you may wish to perform in your environment.</footer>
       </blockquote>
       <form class="form-horizontal">
@@ -115,7 +113,7 @@
                    $('#jenkins').removeClass()
                    $('#jenkins').addClass(getStatusClass(results['jenkins'], results['ci-serf'])); 
                    $('#gerrit').removeClass()
-                   $('#gerrit').addClass(getStatusClass(results['gerrit-http'], results['ldap-gerrit-shipyard-selenium-serf']));
+                   $('#gerrit').addClass(getStatusClass(results['gerrit'], results['ldap-gerrit-shipyard-selenium-serf']));
                    $('#sonar').removeClass()
                    $('#sonar').addClass(getStatusClass(results['sonar'], results['ci-serf']));
                    $('#elk').removeClass()
@@ -123,7 +121,7 @@
                    $('#ldap-gerrit-shipyard-selenium').removeClass()
                    $('#ldap-gerrit-shipyard-selenium').addClass(getStatusClass(results['hub'],results['ldap-gerrit-shipyard-selenium-serf'] ));
                    $('#shipyard-container').removeClass()
-                   $('#shipyard-container').addClass(getStatusClass(results['shipyard-http'], results['ldap-gerrit-shipyard-selenium-serf']));
+                   $('#shipyard-container').addClass(getStatusClass(results['shipyard'], results['ldap-gerrit-shipyard-selenium-serf']));
                    $('#adlm-confluence').removeClass()
                    $('#adlm-confluence').addClass(getStatusClass(results['confluence'], results['adlm-confluence-serf']));
                    $('#jira').removeClass()
@@ -132,7 +130,8 @@
                    $('#consul-rp').addClass(getStatusClass(results['nginx'], results['reverse-proxy-serf']));
                    $('#sensu').removeClass()
                    $('#sensu').addClass(getStatusClass(results['sensu']));
-
+                   $('#artifacts-nexus').removeClass()
+                   $('#artifacts-nexus').addClass(getStatusClass(results['nexus'], results['nexus-serf']));
              });
          }
       </script>
@@ -142,6 +141,11 @@
                  <div class="bs-callout bs-callout-info" id = 'jira'>
                    <h4>
                       <a target = "_blank" href ="/jira">JIRA</a>
+                   </h4>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id = 'artifacts-nexus'>
+                   <h4>
+                      <a target = "_blank" id='nexus' href ="/">Nexus</a>
                    </h4>
                  </div>
                  <div class="bs-callout bs-callout-info"  id = 'adlm-confluence'>
@@ -213,34 +217,10 @@
       <br />
       <div role="tabpanel">
          <ul class="nav nav-pills nav-justified" role="tablist" id="frameworks">
-            <li role="presentation" class="active"><a href="#petclinic-tab" aria-controls="petclinic-tab" role="tab" data-toggle="tab">Pet Clinic</a></li>
-            <li role="presentation"><a data-toggle="tab" aria-controls="hybris-tab" role="tab" data-toggle="tab" href="#hybris-tab">Hybris</a></li>
-            <li role="presentation"><a data-toggle="tab" aria-controls="aowp-tab" role="tab" data-toggle="tab" href="#aowp-tab">AOWP</a></li>
+			<li role="presentation" class="active"><a data-toggle="tab" aria-controls="hybris-tab" role="tab" data-toggle="tab" href="#hybris-tab">Hybris</a></li>
          </ul>
          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade in active" id="petclinic-tab">
-               <br />
-               <a target = "_blank" href ="/petclinic">Pet Clinic CI Environment</a> (No app deployed, to deploy follow <a target="_blank" href = "https://adlm.accenture.com/wiki/display/DOT/Deploy+Application+package">Deploy Application Package</a>)
-               <ul>
-                  <li>
-                     <a target = "_blank" href ="jenkins/view/Model_Office_Pipeline/">Pet Clinic Pipeline</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/sonar/dashboard/index/4">Sonar Report</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_automation_Demo/36/artifact/test-36-report.html">OWASP ZAP Report</a>  
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_automation_Demo/cucumber-html-reports/">
-                        Cucumber Report</a
-                  </li>
-                  <li>
-                  <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_performance_Demo/18/gatling/report/recordedsimulation/source/">Perfomance Test Report</a>
-                  </li>
-               </ul>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="hybris-tab">
+           <div role="tabpanel" class="tab-pane fade in active" id="hybris-tab">
                <br />
                <ul>
                   <li>
@@ -254,43 +234,6 @@
                   </li>
                   <li>
                      <a target = "_blank" href ="/sonar/dashboard/index/208">Sonar Report</a>
-                  </li>
-               </ul>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="aowp-tab">
-               <form class="form-horizontal">
-                  <div class="form-group">
-                     <br />
-                     <label class="col-sm-1 control-label">Git URL</label>
-                     <div class="col-sm-10">
-                        <p class="form-control-static">
-                           git clone http://<script>document.write(window.location.host)</script>/gerrit/node-questionapp
-                        </p>
-                     </div>
-                  </div>
-               </form>
-               <ul>
-                  <li>
-                     <a target = "_blank" id="nodeapp" href ="/">AOWP CI Environment</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/AOWP_pipeline/">Jenkins AOWP Pipeline</a>  
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/AOWP_pipeline/job/codeanalysis-nodeapp/HTML_Report/?">Code analysis report</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_automation_Demo/36/artifact/test-36-report.html">OWASP ZAP Report</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_automation_Demo/cucumber-html-reports/">
-                        Cucumber Report</a
-                  </li>
-                  <li>
-                  <a target = "_blank" href ="/jenkins/view/Model_Office_Pipeline/job/Test_performance_Demo/18/gatling/report/recordedsimulation/source/">Perfomance Test Report</a>
-                  </li>
-                  <li>
-                     <a target = "_blank" id="phabricator" href ="/">Phabricator code review</a>
                   </li>
                </ul>
             </div>

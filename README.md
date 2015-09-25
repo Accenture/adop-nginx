@@ -14,8 +14,14 @@ Nginx is a high performance reverse proxy. This image also has the LDAP authenti
 
 ## hosting some simple static content
 
-	docker run --name <your-container-name> -dt -v /resources/configuration/:/etc/nginx/:ro -v /resources/release_note:/usr/share/nginx/html/:ro -v /var/log:/var/log -p 443:443 -p 80:80 docker.accenture.com/dcsc/academy_nginx:VERSION
-
+      $ docker run --name <your-container-name> -dt \
+        -v /resources/configuration/:/etc/nginx/:ro \
+        -v /resources/release_note:/usr/share/nginx/html/:ro \
+        -v /var/log:/var/log 
+        -p 443:443 \
+        -p 80:80 \
+        docker.accenture.com/dcsc/academy_nginx:VERSION
+        
 ## Release Note
 
 This is the nginx home page on the root context. It provides an overview of the platform and links to tools in the stack.
