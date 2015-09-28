@@ -129,7 +129,7 @@
                    $('#consul-rp').removeClass()
                    $('#consul-rp').addClass(getStatusClass(results['nginx'], results['reverse-proxy-serf']));
                    $('#sensu').removeClass()
-                   $('#sensu').addClass(getStatusClass(results['sensu']));
+                   $('#sensu').addClass(getStatusClass(results['sensu'], results['sensu-serf']));
                    $('#artifacts-nexus').removeClass()
                    $('#artifacts-nexus').addClass(getStatusClass(results['nexus'], results['nexus-serf']));
              });
