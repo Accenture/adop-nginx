@@ -124,8 +124,6 @@
                    $('#shipyard-container').addClass(getStatusClass(results['shipyard'], results['ldap-gerrit-shipyard-selenium-serf']));
                    $('#adlm-confluence').removeClass()
                    $('#adlm-confluence').addClass(getStatusClass(results['confluence'], results['adlm-confluence-serf']));
-                   $('#jira').removeClass()
-                   $('#jira').addClass(getStatusClass(results['jira'], results['adlm-jira-serf']));
                    $('#consul-rp').removeClass()
                    $('#consul-rp').addClass(getStatusClass(results['nginx'], results['reverse-proxy-serf']));
                    $('#sensu').removeClass()
@@ -138,11 +136,6 @@
       <div class="container">
         <div class="row">
             <div class="col-xs-6 col-md-3">
-                 <div class="bs-callout bs-callout-info" id = 'jira'>
-                   <h4>
-                      <a target = "_blank" href ="/jira">JIRA</a>
-                   </h4>
-                 </div>
                  <div class="bs-callout bs-callout-info" id = 'artifacts-nexus'>
                    <h4>
                       <a target = "_blank" id='nexus' href ="/">Nexus</a>
