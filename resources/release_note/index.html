@@ -2,7 +2,34 @@
 <head>
 
     <script src="js/jquery.js"></script> 
+
     <script> 
+    
+    
+      var dir = "bp";
+      var filepattern = "release-note.htm";
+      var div_id = 0;
+      var includes = "$(function(){";
+      var divs = "";
+      $.ajax({
+      //This will retrieve the contents of the folder if the folder is configured as 'browsable'
+        url: dir,
+        success: function (data) {
+        //Create snippet to include all blueprints
+          $(data).find("a:contains(" + filepattern + ")").each(function () {
+	    var l = document.createElement("a");
+	    l.href = this;
+            var filename = l.pathname;
+            div_id++;
+            includes += "$(\"#" + div_id + "\").load(\"" + dir + filename + "\");";
+            divs += "<div id='" + div_id + "'></div>";
+          });
+	  //Create the dives and then load the contents
+          $("body").append(divs);
+          eval(includes + "});");
+        }
+    });
+    
     $(function(){
       $("#core-content").load("core-release-note.html"); 
     });
@@ -12,8 +39,8 @@
 </head>
 <body>
 
-<!-- import core release note -->
-<div id="core-content"></div>
+  <!-- import core release note (probably don't touch)-->
+  <div id="core-content"></div>
 
 </body>
 </html>
