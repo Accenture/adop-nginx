@@ -26,13 +26,13 @@
       </style>
 
       <script type = "text/javascript">
-         window.onload = function(){
-         document.getElementById('kibana').href = createUrl("kibana") + "//index.html#/dashboard/file/logstash.json";
-         document.getElementById('shipyard').href = createUrl("shipyard");
-         document.getElementById('selenium_grid').href = createUrl("selenium") +"//grid/console";
-         document.getElementById('sensu').href = createUrl("sensu");
-         document.getElementById('consul').href = createUrl("consul");
-         document.getElementById('nexus').href = createUrl("nexus");
+         function generateUrls(){
+             document.getElementById('kibana').href = createUrl("kibana") + "//index.html#/dashboard/file/logstash.json";
+             document.getElementById('shipyard').href = createUrl("shipyard");
+             document.getElementById('selenium_grid').href = createUrl("selenium") +"//grid/console";
+             document.getElementById('sensu').href = createUrl("sensu");
+             document.getElementById('consul').href = createUrl("consul");
+             document.getElementById('nexus').href = createUrl("nexus");
          }
          
          function createUrl(host){
@@ -186,6 +186,9 @@
             </div>
         </div>
       </div>
+      <script>
+        generateUrls()
+      </script>
       <br />
    </body>
 </html>
