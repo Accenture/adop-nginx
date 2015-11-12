@@ -31,13 +31,6 @@
          document.getElementById('shipyard').href = createUrl("shipyard");
          document.getElementById('selenium_grid').href = createUrl("selenium") +"//grid/console";
          document.getElementById('sensu').href = createUrl("sensu");
-         document.getElementById('phabricator1').href = createUrl("phabricator");
-         document.getElementById('phabricator2').href = createUrl("phabricator");
-         document.getElementById('nodeapp').href = createUrl("nodeapp");
-         document.getElementById('nodeapp_a1').href = createUrl("nodeapp-a");
-         document.getElementById('nodeapp_b1').href = createUrl("nodeapp-b");
-         document.getElementById('nodeapp_a2').href = createUrl("nodeapp-a");
-         document.getElementById('nodeapp_b2').href = createUrl("nodeapp-b");
          document.getElementById('consul').href = createUrl("consul");
          document.getElementById('nexus').href = createUrl("nexus");
          }
@@ -55,18 +48,18 @@
          <h4>Welcome to your own dedicated Continuous Delivery platform.</h4>
          <br />
          This can be used for demos, training, and starting real projects.<br />
-         Please see the <a target="_blank" href="https://adlm.accenture.com/wiki/pages/viewpage.action?pageId=148898151">Frequently Demoed Features</a> wiki page for example ADOP use cases.<br>
+         Please see the <a target="_blank" href="https://alm.accenture.com/wiki/pages/viewpage.action?pageId=148898151">Frequently Demoed Features</a> wiki page for example ADOP use cases.<br>
          Please use <a target='_blank' href="http://www.google.com/chrome/">Google Chrome </a>or <a target='_blank' href="https://www.mozilla.org/en-GB/firefox/new/">Firefox </a>when navigating the wiki pages and performing the demo(s) as Internet Explorer has performance issues.
       </div>
       <h3>Getting Started</h3>
       <blockquote>
-         <a target="_blank" href="https://adlm.accenture.com/wiki/display/DOT/Accenture+DevOps+Platform">ADOP Overview</a>
+         <a target="_blank" href="https://alm.accenture.com/wiki/display/DOT/Accenture+DevOps+Platform">ADOP Overview</a>
          <footer>An overview of your Accenture DevOps Platform (ADOP) environment.</footer>
          <br />
-         <a target="_blank" href="https://adlm.accenture.com/wiki/display/DOT/Architecture">ADOP Architecture</a>
+         <a target="_blank" href="https://alm.accenture.com/wiki/display/DOT/Architecture">ADOP Architecture</a>
          <footer>Your ADOP offices architecture overview.</footer>
          <br />
-         <a target="_blank" href="https://adlm.accenture.com/wiki/pages/viewpage.action?pageId=148898151">Frequently Demoed Features</a>
+         <a target="_blank" href="https://alm.accenture.com/wiki/pages/viewpage.action?pageId=148898151">Frequently Demoed Features</a>
          <footer>A link to example scenarios you may wish to perform in your environment.</footer>
       </blockquote>
       <form class="form-horizontal">
@@ -120,49 +113,24 @@
                    $('#gerrit').addClass(getStatusClass(results['gerrit'], results['ldap-gerrit-shipyard-selenium-serf']));
                    $('#sonar').removeClass()
                    $('#sonar').addClass(getStatusClass(results['sonar'], results['ci-serf']));
+                   $('#artifacts-nexus').removeClass()
+                   $('#artifacts-nexus').addClass(getStatusClass(results['nexus'], results['nexus-serf']));
+                   $('#sensu-rp').removeClass()
+                   $('#sensu-rp').addClass(getStatusClass(results['sensu'], results['sensu-serf']));
                    $('#elk').removeClass()
                    $('#elk').addClass(getStatusClass(results['kibana'], results['elk-serf']))
                    $('#ldap-gerrit-shipyard-selenium').removeClass()
                    $('#ldap-gerrit-shipyard-selenium').addClass(getStatusClass(results['hub'],results['ldap-gerrit-shipyard-selenium-serf'] ));
                    $('#shipyard-container').removeClass()
                    $('#shipyard-container').addClass(getStatusClass(results['shipyard'], results['ldap-gerrit-shipyard-selenium-serf']));
-                   $('#adlm-confluence').removeClass()
-                   $('#adlm-confluence').addClass(getStatusClass(results['confluence'], results['adlm-confluence-serf']));
-                   $('#jira').removeClass()
-                   $('#jira').addClass(getStatusClass(results['jira'], results['adlm-jira-serf']));
                    $('#consul-rp').removeClass()
                    $('#consul-rp').addClass(getStatusClass(results['nginx'], results['reverse-proxy-serf']));
-                   $('#sensu-rp').removeClass()
-                   $('#sensu-rp').addClass(getStatusClass(results['sensu'], results['sensu-serf']));
-                   $('#artifacts-nexus').removeClass()
-                   $('#artifacts-nexus').addClass(getStatusClass(results['nexus'], results['nexus-serf']));
-                   $('#phabricator-check').removeClass();
-                   $('#phabricator-check').addClass(getStatusClass(results['phabricator'], results['phabricator-serf']));
-                   $('#nodeapp-a-check').removeClass();
-                   $('#nodeapp-a-check').addClass(getStatusClass(results['aowp1'], results['aowp1-serf']));
-                   $('#nodeapp-b-check').removeClass();
-                   $('#nodeapp-b-check').addClass(getStatusClass(results['aowp2'], results['aowp2-serf']));
              });
          }
       </script>
       <div class="container">
         <div class="row">
             <div class="col-xs-6 col-md-3">
-                 <div class="bs-callout bs-callout-info" id = 'jira'>
-                   <h4>
-                      <a target = "_blank" href ="/jira">JIRA</a>
-                   </h4>
-                 </div>
-                 <div class="bs-callout bs-callout-info" id = 'artifacts-nexus'>
-                   <h4>
-                      <a target = "_blank" id='nexus' href ="/">Nexus</a>
-                   </h4>
-                 </div>
-                 <div class="bs-callout bs-callout-info"  id = 'adlm-confluence'>
-                   <h4>
-                      <a target = "_blank" id ='confluence' href ="/confluence">Confluence</a>
-                   </h4>
-                 </div>
                  <div class="bs-callout bs-callout-info" id = 'jenkins'>
                    <h4>
                       <a target = "_blank" href ="/jenkins">Jenkins</a>
@@ -181,6 +149,11 @@
                  <div class="bs-callout bs-callout-info" id='sonar'>
                    <h4>
                       <a target = "_blank" href ="/sonar">Sonar</a>
+                   </h4>
+                 </div>
+                 <div class="bs-callout bs-callout-info" id = 'artifacts-nexus'>
+                   <h4>
+                      <a target = "_blank" id='nexus' href ="/">Nexus</a>
                    </h4>
                  </div>
                  <div class="bs-callout bs-callout-info" id='sensu-rp'>
@@ -210,25 +183,9 @@
                       <a target = "_blank" id='consul' href ="/">Consul</a>
                    </h4>
                  </div>
-                 <div class="bs-callout bs-callout-info" id='phabricator-check'>
-                   <h4>
-                      <a target = "_blank" id='phabricator1' href ="/">Phabricator</a>
-                   </h4>
-                 </div>
-                 <div class="bs-callout bs-callout-info" id='nodeapp-a-check'>
-                   <h4>
-                      <a target = "_blank" id='nodeapp_a1' href ="/">Nodeapp Instance A</a>
-                   </h4>
-                 </div>
-                 <div class="bs-callout bs-callout-info" id='nodeapp-b-check'>
-                   <h4>
-                      <a target = "_blank" id='nodeapp_b1' href ="/">Nodeapp Instance B</a>
-                   </h4>
-                 </div>
             </div>
         </div>
       </div>
-      <!--</ul>-->
       <br />
    </body>
 </html>
