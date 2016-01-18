@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 
 MAINTAINER Robert Northard, <robert.a.northard>
 
-ENV NGINX_VERSION v1.7.10
+ENV NGINX_VERSION 1.8.0
 
 ############## nginx setup ##############
 
@@ -25,8 +25,8 @@ RUN mkdir /var/log/nginx \
     && git clone https://github.com/kvspb/nginx-auth-ldap.git \
     && git clone https://github.com/nginx/nginx.git \
     && cd nginx \
-    && git checkout tags/${NGINX_VERSION} \
-    && ./configure \
+    && git checkout tags/release-${NGINX_VERSION} \
+    && ./auto/configure \
         --add-module=/root/nginx-auth-ldap \
         --with-http_ssl_module \
         --with-debug \
