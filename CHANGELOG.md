@@ -3,18 +3,10 @@ CHANGELOG
 
 This file is used to list changes made in each version of nginx image.
 
-2.0.16
+0.0.1
 -----
-  robert.a.northard
-  Updated Gerrit URL to be dynamically generated based on JavaScript window.location.host DOM element.
-
-
-2.0.15
------
-	robert.a.northard
-	Externalised nginx Dockerfile into own repository.
-	Externalised nginx configuration.
-	Added LDAP authentication.
+  nicholas.griffin
+  Updating the image to use a working Ubuntu base image
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
