@@ -50,6 +50,7 @@ RUN mkdir -p /resources/
 COPY resources/configuration/ /resources/configuration/
 COPY resources/release_note/ /resources/release_note/
 COPY resources/scripts/ /resources/scripts/
+COPY templates/configuration/ /templates/configuration/
 RUN chmod +x /resources/scripts/entrypoint.sh
 
 CMD ["/resources/scripts/entrypoint.sh"]
