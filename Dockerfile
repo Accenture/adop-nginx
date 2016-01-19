@@ -45,4 +45,11 @@ RUN chmod +x /etc/init.d/nginx
 
 EXPOSE 80 443
 
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+# Adding base data
+RUN mkdir -p /resources/
+COPY resources/configuration/ /resources/configuration/
+COPY resources/release_note/ /resources/release_note/
+COPY resources/scripts/ /resources/scripts/
+RUN chmod +x /resources/scripts/entrypoint.sh
+
+CMD ["/resources/scripts/entrypoint.sh"]

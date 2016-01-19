@@ -7,6 +7,11 @@ This file is used to list changes made in each version of nginx image.
 -----
   nicholas.griffin
   Updating the image to use a working Ubuntu base image
+  
+0.0.2
+-----
+  nicholas.griffin
+  Updating the image to include base data
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
