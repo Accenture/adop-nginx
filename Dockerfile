@@ -38,9 +38,7 @@ RUN mkdir /var/log/nginx \
     && make install \
     && cd .. \
     && rm -rf nginx-auth-ldap \
-    && rm -rf nginx \
-    && wget https://raw.github.com/JasonGiedymin/nginx-init-ubuntu/master/nginx -O /etc/init.d/nginx \
-    && chmod +x /etc/init.d/nginx
+    && rm -rf nginx
 
 COPY templates/nginx/nginx.init /etc/init.d/nginx
 RUN chmod +x /etc/init.d/nginx
