@@ -1,0 +1,589 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22-Dec-2015, 13:50:21
+    Author     : silvana.donato
+*/
+
+@import "mixins";
+@import "colors";
+@import "sizes";
+
+$font-stack:    Helvetica, Arial, sans-serif;
+$font-heading: 'Open Sans Condensed', Helvetica, Arial, sans-serif;
+
+
+
+$header-image: "../img/devops-bg2.jpg";
+$header-image-cover: "../img/cover2.png";
+
+
+body { 
+    background-color: $primary-bg-color;
+    font: $font-stack-size $font-stack;
+    color: $primary-color;
+}
+
+ul, ol{
+    padding: 0;
+}
+li {
+    list-style-type: none;
+}
+a{
+    color: $anchor-color;
+    &:hover{
+        color: $anchor-hover;
+        text-decoration: none;
+    }
+    img{
+        border: none;
+    }
+}
+
+.nopadding{
+    padding: 0 !important;
+}
+
+.container-fluid {
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+/**
+* HEADER
+*********/
+
+#myNavbar{
+    background-color: $navbar-bg-color;
+    margin-bottom: 0;
+    border-radius: 0;
+    
+    .navbar-nav{
+        &>li{
+            a{
+                display: block;
+                padding: 35px 15px;                
+                border-radius: 0px;
+                color: $anchor-color-inverse;
+                font-size: $font-stack-size;
+                &:hover{
+                    background-color: black;
+                }
+            }
+        }
+    }
+    .navbar-header{        
+        .navbar-brand{
+            height: auto;
+            padding: 15px;
+            color: $anchor-color-inverse;
+            font-size: $font-stack-size + 8;
+            img {
+                display: inline-block;
+                display: block;
+                height: auto;
+                max-width: 90%;
+            }
+        }
+    }    
+}
+
+#header{
+    position: relative;
+    height: $header-height; 
+    overflow: hidden; 
+    background-color:  $header-bg-color;
+
+        .header-cover{
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: $header-bg-cover;    
+
+
+            .header-intro{
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 55%;
+                height: 100%;
+                padding: 2% 8% 2% 4%;
+                background-image:  url($header-image-cover);
+                background-repeat:   no-repeat;
+                background-position-x: right;
+                background-position-y: 0;
+                background-position: right 0;
+
+                .header-title{
+                    font-family: $font-heading;
+                    padding: 1% 0;
+                    font-size: 4.4em;
+                    font-size: 7.2rem;
+                    font-weight: bold;
+                    color: white;
+                }
+                .header-button{
+                    padding: 13px;                        
+                    background-color: $button-bg-color;
+                    border-radius: 3px;
+                    display: block;
+                    width: 50%;
+                    text-align: center;
+                    text-decoration: none;
+                    
+                    &:hover{ 
+                        background-color: lighten( $button-bg-color, 30% );
+                    }
+                }            
+                
+            }    
+            .header-teasers{
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                width: 45%;
+                height: 100%;
+                padding-left: 3%;
+
+
+                .other-info{
+                    padding: 7% 2% 0;
+                    text-align: left;
+                    font-size: 1.1em;
+                    font-size: 1.8rem;
+                    line-height: 1.8;
+                    color: white;
+                    a{
+                        color: $anchor-color-header; 
+                        &:hover{
+                            color: $anchor-hover;
+                        }
+                    }
+                }
+            }
+        }
+    
+    
+    
+   
+}
+
+/**
+MAIN CONTENT
+*/
+
+
+
+/* blocks indicating the status */
+.bs-callout {
+    position: relative;
+    float: left;
+    width: 15%;
+    min-width: $callout-width;
+    height: $callout-height;
+    padding: 0;
+    margin: 0 1.2% 20px 0;
+    border-style: solid;
+    border-width: 2px;
+    border-left-width: 12px;
+    border-radius: 2px;
+    background-color: $services-bg-color;
+    
+    a{
+        display: block;
+        width: 100%;
+        height: 92%;
+        overflow: hidden;                
+        
+    }
+    
+    code {
+        border-radius: 3px;
+    }
+    
+    &.bs-callout-default {
+        border-color: $co-default-color;
+    }
+    &.bs-callout-primary {
+        border-color: $co-primary-color;
+    }
+    &.bs-callout-success {
+        border-color: $co-success-color;
+    }
+    &.bs-callout-danger {
+        border-color: $co-danger-color;
+    }
+    &.bs-callout-warning {
+        border-color: $co-warning-color;
+    }
+    &.bs-callout-info {
+        border-color: $co-info-color;
+    }
+}
+
+
+/* services - tools */
+
+#core{
+    padding: $blocks-padding-height 0;
+    background-color: $services-bg-color;    
+
+    .services{
+        padding-bottom: $blocks-padding-height;
+        width: 90%;
+        margin: 0 auto;
+        
+        &:last-child{
+            padding-bottom: 0;
+        }
+            
+
+        h1.service-heading{ 
+            font-family: $font-heading;
+            font-size: 4.1em;
+            font-size: 4.6rem;
+            margin: 0 0 40px;
+            
+            &:after{
+                content: " ";
+                display: block;
+                width: 100px;
+                border-bottom: 2px solid #CCC;
+                padding-bottom: 5px;
+            }
+        }
+
+        a.service{
+            color: $primary-color;
+            h1{   
+                @include absolute-position(0, auto, auto, 0);
+                box-shadow: 1px 1px 1px 2px rgba(0,0,0, 0.2);
+                background-color: $services-bg-color; 
+                margin: 0;
+                padding: 3px 8px;
+                width: 101%;
+                height: 40px;           
+                z-index: 100;
+                overflow: hidden;
+                font-size: 22px;
+                line-height: 36px;
+
+                img{
+                    width: auto; 
+                    max-height: 100%;
+                    max-width: 98%;
+                    vertical-align: initial;
+                }
+                
+                span{
+                    display: none;                    
+                }
+                
+                &.no-image{
+                    img{
+                        display: none;
+                    }
+                    span{
+                        display: inline;
+                    }
+                }
+            }
+            div{
+                margin: 55px 8px;
+                font-size: $font-stack-size;
+                color: $primary-color;
+                line-height: 1.3;
+            }
+        }
+    }
+
+}
+
+/* frameworks - tab panels */
+
+
+
+.form-horizontal .form-group {
+    margin-right: 0;
+    margin-left: 0; 
+}
+
+#blueprints{  
+    padding: $blocks-padding-height 0;
+    border-top: 3px solid $secondary-bg-color;
+    
+    .blueprint-separator{
+        width: 100%;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        border-bottom: 1px solid #E0DDDD;    
+        box-shadow: 0 1px 2px #E0DDDD, 0 -1px 2px #E0DDDD;          
+    }
+    
+    .tab-pane-blocks-side1{
+        .tab-pane-blocks-heading{
+            padding-bottom: 10px;
+            font-family: $font-heading; 
+            line-height: 0.5;
+            h1{             
+                font-size: 4.1em;
+                font-size: 4.6rem;
+                margin: 0;
+                margin-right: 20px;
+                text-align: right;
+            }
+        }
+    }
+
+    .tab-pane-blocks-side2{
+        min-height: 300px;
+        border-left: 1px solid #CCC;
+        padding-left: $blocks-padding-height+10;  
+        
+    }
+}
+
+/* tabs styling */
+.nav-pills > li{
+    color: $panels-color;
+    border-bottom: 1px solid #CCC;
+    font: 24px Arial, sans-serif;
+
+    a{
+        color: $panels-color;
+        font: 24px Arial, sans-serif;
+
+        &:hover{
+            color: $anchor-hover;
+        }
+    }
+
+    &.active{
+
+        &>a, &>a:focus, &>a:hover{
+            color: $panels-color;
+            background-color: transparent;
+            border-bottom: 2px solid $secondary-bg-color;
+        }
+    }
+}
+.tab-pane{
+    font-size: $font-stack-size;
+    padding: 20px 0;
+
+    &>ul{
+        padding: 10px 20px;
+
+        &>li{
+            line-height: 1.8;
+
+            &:before{                        
+                content: "\e080";
+                font-family: 'Glyphicons Halflings';
+                font-size: 12px;
+                float: left;
+                margin: 4px 20px 0 -14px;
+                color: #CCCCCC;
+            }
+        }
+    }     
+}
+
+/***
+* FOOTER
+*********/
+
+footer{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: left;
+    background-color: $footer-bg-color;
+    color: $anchor-color-inverse;
+    font-size: $font-stack-size;
+}
+
+/*correction of row margin*/
+.row {
+    margin-right: 0px;
+    margin-left: 0px; 
+}
+
+/****
+* RESPONSIVE
+**************/
+
+
+
+
+@media screen  and (max-width: 1199px){
+    
+    
+    
+}
+
+@media screen  and (max-width: 1000px){
+    
+    #header{    
+        .header-cover{
+            .header-intro{                
+                .header-title{
+                    font-family: $font-heading;
+                    padding: 4% 0;
+                    font-size: 3em;
+                    font-size: 5rem;
+                }
+            }            
+            .header-teasers {
+                .other-info{
+                        font-size: 0.9em;
+                         font-size: 1.4rem; 
+                }
+            }
+        }
+    }
+    
+    #core{
+        .services{           
+            width: 96%;
+        }
+    }
+    
+}
+
+
+@media screen and (max-width: 940px){
+    
+    #myNavbar{    
+        .navbar-header{ 
+            width: 40%;
+            .navbar-brand{
+                font-size: $font-stack-size - 4;
+            }
+        }
+        
+        .navbar-nav{
+            &>li a{
+                font-size: $font-stack-size - 2;
+            }
+        }
+            
+    }
+    
+    
+    
+}
+
+@media screen and (max-width: 860px){
+    #myNavbar{    
+        .navbar-header{ 
+            .navbar-brand{
+                font-size: $font-stack-size - 6;
+            }
+        }
+        .navbar-nav{
+            &>li a{
+                font-size: $font-stack-size - 4;
+            }
+        }
+    }
+    #header{
+        height: $header-height-small;
+        .header-cover{
+            .header-intro{
+                .header-title{
+                    display: none;
+                }                               
+            }            
+            .header-teasers {
+                display: none;
+            }
+        }
+    }
+    #core{
+        .services{
+            padding-bottom: $blocks-padding-height - 20;
+            width: 100%;
+        }
+    }
+    
+    #blueprints{  
+
+    
+        .tab-pane-blocks-side1{
+            width: 100%;
+            .tab-pane-blocks-heading{
+
+                h1{             
+                    font-size: 2.5em;
+                    font-size: 4rem;
+                    margin: 0;
+                    margin-right: 0;
+                    text-align: left;
+                    
+                     &:after{
+                        content: " ";
+                        display: block;
+                        width: 80px;
+                        border-bottom: 2px solid #CCC;
+                        padding-bottom: 5px;
+                    }
+                }
+            }
+        }
+
+        .tab-pane-blocks-side2{            
+            border-left: none;
+            width: 90%;
+            padding-left: 15px;
+        }
+    }
+    
+}
+
+@media screen and (max-width: 768px){
+    
+    #myNavbar{    
+        .navbar-header{ 
+            width: 100%;
+            .navbar-brand{
+                font-size: $font-stack-size - 2;
+            }
+        }        
+    }
+    
+    
+    
+    #core{
+        .services{
+                h1.service-heading{ 
+                font-size: 2.5em;
+                font-size: 4rem;
+                margin: 0 0 30px;
+
+                &:after{
+                    content: " ";
+                    display: block;
+                    width: 80px;
+                    border-bottom: 2px solid #CCC;
+                    padding-bottom: 5px;
+                }
+            }
+        }
+        
+    }
+    
+    
+}
+
+
+
+
+
+
+
+

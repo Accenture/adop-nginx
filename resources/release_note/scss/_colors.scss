@@ -1,0 +1,28 @@
+/* 
+    Created on : 30-Dec-2015, 13:30:11
+    Author     : silvana.donato
+*/
+
+$primary-bg-color: #F5F5F5;
+$secondary-bg-color: #00a000; 
+$navbar-bg-color: #313233;
+$button-bg-color: #282928; 
+$services-bg-color: #ffffff;
+$header-bg-color: #026002;
+$header-bg-cover: rgba(60, 118, 61, 0.2);
+$footer-bg-color: $navbar-bg-color;
+
+$primary-color: #5C5C5C;
+$header-color: #F5F5F5;
+$anchor-color: $secondary-bg-color;
+$anchor-color-inverse:  #F5F5F5;
+$anchor-color-header:  rgb(209, 214, 218);
+$anchor-hover: #FF8000;
+$panels-color: $primary-color;
+
+$co-default-color: #777;
+$co-primary-color: #428bca;
+$co-success-color: #5cb85c;
+$co-danger-color: #d9534f;
+$co-warning-color: #f0ad4e;
+$co-info-color: lighten($primary-color, 20%);

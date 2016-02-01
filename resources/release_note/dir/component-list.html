@@ -1,0 +1,18 @@
+            <div class="services">
+                   <div class="row ">                          
+                       <div class="col-xs-12 col-md-12">
+                           <h1 class="service-heading">{{linkitem.type}}</h1>
+                       </div>
+                   </div> 
+
+                    <div class="row ">                               
+                        <div class="col-xs-12 col-md-12 services-blocks">
+                            <div class="bs-callout bs-callout-info" id = '{{component.id}}' ng-repeat="component in linkitem.components">                        
+                                <a href ="{{component.link}}" class="clearfix service" target="_blank">
+                                    <h1><img ng-src="{{component.img || 'none'}}"  err-src title="{{component.title}}"></h1>
+                                    <div>{{component.description}}</div>
+                                </a>                        
+                            </div>                                                  
+                        </div>
+                     </div>
+                </div> 

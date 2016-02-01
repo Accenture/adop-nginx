@@ -1,0 +1,373 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22-Dec-2015, 13:50:21
+    Author     : silvana.donato
+*/
+/* 
+    Created on : 30-Dec-2015, 13:34:30
+    Author     : silvana.donato
+*/
+/* 
+    Created on : 30-Dec-2015, 13:30:11
+    Author     : silvana.donato
+*/
+/* 
+    Created on : 30-Dec-2015, 13:35:29
+    Author     : silvana.donato
+*/
+body {
+  background-color: #F5F5F5;
+  font: 16px Helvetica, Arial, sans-serif;
+  color: #5C5C5C; }
+
+ul, ol {
+  padding: 0; }
+
+li {
+  list-style-type: none; }
+
+a {
+  color: #00a000; }
+  a:hover {
+    color: #FF8000;
+    text-decoration: none; }
+  a img {
+    border: none; }
+
+.nopadding {
+  padding: 0 !important; }
+
+.container-fluid {
+  padding-right: 2%;
+  padding-left: 2%; }
+
+/**
+* HEADER
+*********/
+#myNavbar {
+  background-color: #313233;
+  margin-bottom: 0;
+  border-radius: 0; }
+  #myNavbar .navbar-nav > li a {
+    display: block;
+    padding: 35px 15px;
+    border-radius: 0px;
+    color: #F5F5F5;
+    font-size: 16px; }
+    #myNavbar .navbar-nav > li a:hover {
+      background-color: black; }
+  #myNavbar .navbar-header .navbar-brand {
+    height: auto;
+    padding: 15px;
+    color: #F5F5F5;
+    font-size: 24px; }
+    #myNavbar .navbar-header .navbar-brand img {
+      display: inline-block;
+      display: block;
+      height: auto;
+      max-width: 90%; }
+
+#header {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background-color: #026002; }
+  #header .header-cover {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(60, 118, 61, 0.2); }
+    #header .header-cover .header-intro {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 55%;
+      height: 100%;
+      padding: 2% 8% 2% 4%;
+      background-image: url("../img/cover2.png");
+      background-repeat: no-repeat;
+      background-position-x: right;
+      background-position-y: 0;
+      background-position: right 0; }
+      #header .header-cover .header-intro .header-title {
+        font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;
+        padding: 1% 0;
+        font-size: 4.4em;
+        font-size: 7.2rem;
+        font-weight: bold;
+        color: white; }
+      #header .header-cover .header-intro .header-button {
+        padding: 13px;
+        background-color: #282928;
+        border-radius: 3px;
+        display: block;
+        width: 50%;
+        text-align: center;
+        text-decoration: none; }
+        #header .header-cover .header-intro .header-button:hover {
+          background-color: #747674; }
+    #header .header-cover .header-teasers {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      width: 45%;
+      height: 100%;
+      padding-left: 3%; }
+      #header .header-cover .header-teasers .other-info {
+        padding: 7% 2% 0;
+        text-align: left;
+        font-size: 1.1em;
+        font-size: 1.8rem;
+        line-height: 1.8;
+        color: white; }
+        #header .header-cover .header-teasers .other-info a {
+          color: #d1d6da; }
+          #header .header-cover .header-teasers .other-info a:hover {
+            color: #FF8000; }
+
+/**
+MAIN CONTENT
+*/
+/* blocks indicating the status */
+.bs-callout {
+  position: relative;
+  float: left;
+  width: 15%;
+  min-width: 180px;
+  height: 150px;
+  padding: 0;
+  margin: 0 1.2% 20px 0;
+  border-style: solid;
+  border-width: 2px;
+  border-left-width: 12px;
+  border-radius: 2px;
+  background-color: #ffffff; }
+  .bs-callout a {
+    display: block;
+    width: 100%;
+    height: 92%;
+    overflow: hidden; }
+  .bs-callout code {
+    border-radius: 3px; }
+  .bs-callout.bs-callout-default {
+    border-color: #777; }
+  .bs-callout.bs-callout-primary {
+    border-color: #428bca; }
+  .bs-callout.bs-callout-success {
+    border-color: #5cb85c; }
+  .bs-callout.bs-callout-danger {
+    border-color: #d9534f; }
+  .bs-callout.bs-callout-warning {
+    border-color: #f0ad4e; }
+  .bs-callout.bs-callout-info {
+    border-color: #8f8f8f; }
+
+/* services - tools */
+#core {
+  padding: 60px 0;
+  background-color: #ffffff; }
+  #core .services {
+    padding-bottom: 60px;
+    width: 90%;
+    margin: 0 auto; }
+    #core .services:last-child {
+      padding-bottom: 0; }
+    #core .services h1.service-heading {
+      font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;
+      font-size: 4.1em;
+      font-size: 4.6rem;
+      margin: 0 0 40px; }
+      #core .services h1.service-heading:after {
+        content: " ";
+        display: block;
+        width: 100px;
+        border-bottom: 2px solid #CCC;
+        padding-bottom: 5px; }
+    #core .services a.service {
+      color: #5C5C5C; }
+      #core .services a.service h1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.2);
+        background-color: #ffffff;
+        margin: 0;
+        padding: 3px 8px;
+        width: 101%;
+        height: 40px;
+        z-index: 100;
+        overflow: hidden;
+        font-size: 22px;
+        line-height: 36px; }
+        #core .services a.service h1 img {
+          width: auto;
+          max-height: 100%;
+          max-width: 98%;
+          vertical-align: initial; }
+        #core .services a.service h1 span {
+          display: none; }
+        #core .services a.service h1.no-image img {
+          display: none; }
+        #core .services a.service h1.no-image span {
+          display: inline; }
+      #core .services a.service div {
+        margin: 55px 8px;
+        font-size: 16px;
+        color: #5C5C5C;
+        line-height: 1.3; }
+
+/* frameworks - tab panels */
+.form-horizontal .form-group {
+  margin-right: 0;
+  margin-left: 0; }
+
+#blueprints {
+  padding: 60px 0;
+  border-top: 3px solid #00a000; }
+  #blueprints .blueprint-separator {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #E0DDDD;
+    box-shadow: 0 1px 2px #E0DDDD, 0 -1px 2px #E0DDDD; }
+  #blueprints .tab-pane-blocks-side1 .tab-pane-blocks-heading {
+    padding-bottom: 10px;
+    font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;
+    line-height: 0.5; }
+    #blueprints .tab-pane-blocks-side1 .tab-pane-blocks-heading h1 {
+      font-size: 4.1em;
+      font-size: 4.6rem;
+      margin: 0;
+      margin-right: 20px;
+      text-align: right; }
+  #blueprints .tab-pane-blocks-side2 {
+    min-height: 300px;
+    border-left: 1px solid #CCC;
+    padding-left: 70px; }
+
+/* tabs styling */
+.nav-pills > li {
+  color: #5C5C5C;
+  border-bottom: 1px solid #CCC;
+  font: 24px Arial, sans-serif; }
+  .nav-pills > li a {
+    color: #5C5C5C;
+    font: 24px Arial, sans-serif; }
+    .nav-pills > li a:hover {
+      color: #FF8000; }
+  .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    color: #5C5C5C;
+    background-color: transparent;
+    border-bottom: 2px solid #00a000; }
+
+.tab-pane {
+  font-size: 16px;
+  padding: 20px 0; }
+  .tab-pane > ul {
+    padding: 10px 20px; }
+    .tab-pane > ul > li {
+      line-height: 1.8; }
+      .tab-pane > ul > li:before {
+        content: "\e080";
+        font-family: 'Glyphicons Halflings';
+        font-size: 12px;
+        float: left;
+        margin: 4px 20px 0 -14px;
+        color: #CCCCCC; }
+
+/***
+* FOOTER
+*********/
+footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: left;
+  background-color: #313233;
+  color: #F5F5F5;
+  font-size: 16px; }
+
+/*correction of row margin*/
+.row {
+  margin-right: 0px;
+  margin-left: 0px; }
+
+/****
+* RESPONSIVE
+**************/
+@media screen and (max-width: 1000px) {
+  #header .header-cover .header-intro .header-title {
+    font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;
+    padding: 4% 0;
+    font-size: 3em;
+    font-size: 5rem; }
+  #header .header-cover .header-teasers .other-info {
+    font-size: 0.9em;
+    font-size: 1.4rem; }
+
+  #core .services {
+    width: 96%; } }
+@media screen and (max-width: 940px) {
+  #myNavbar .navbar-header {
+    width: 40%; }
+    #myNavbar .navbar-header .navbar-brand {
+      font-size: 12px; }
+  #myNavbar .navbar-nav > li a {
+    font-size: 14px; } }
+@media screen and (max-width: 860px) {
+  #myNavbar .navbar-header .navbar-brand {
+    font-size: 10px; }
+  #myNavbar .navbar-nav > li a {
+    font-size: 12px; }
+
+  #header {
+    height: 10px; }
+    #header .header-cover .header-intro .header-title {
+      display: none; }
+    #header .header-cover .header-teasers {
+      display: none; }
+
+  #core .services {
+    padding-bottom: 40px;
+    width: 100%; }
+
+  #blueprints .tab-pane-blocks-side1 {
+    width: 100%; }
+    #blueprints .tab-pane-blocks-side1 .tab-pane-blocks-heading h1 {
+      font-size: 2.5em;
+      font-size: 4rem;
+      margin: 0;
+      margin-right: 0;
+      text-align: left; }
+      #blueprints .tab-pane-blocks-side1 .tab-pane-blocks-heading h1:after {
+        content: " ";
+        display: block;
+        width: 80px;
+        border-bottom: 2px solid #CCC;
+        padding-bottom: 5px; }
+  #blueprints .tab-pane-blocks-side2 {
+    border-left: none;
+    width: 90%;
+    padding-left: 15px; } }
+@media screen and (max-width: 768px) {
+  #myNavbar .navbar-header {
+    width: 100%; }
+    #myNavbar .navbar-header .navbar-brand {
+      font-size: 14px; }
+
+  #core .services h1.service-heading {
+    font-size: 2.5em;
+    font-size: 4rem;
+    margin: 0 0 30px; }
+    #core .services h1.service-heading:after {
+      content: " ";
+      display: block;
+      width: 80px;
+      border-bottom: 2px solid #CCC;
+      padding-bottom: 5px; } }
+
+/*# sourceMappingURL=style.css.map */
