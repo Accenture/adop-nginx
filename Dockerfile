@@ -16,7 +16,8 @@ RUN apt-get update \
         zlib1g-dev \
         libldap2-dev \
         libssl-dev \
-        wget
+        wget \
+        jq
 
 # See http://wiki.nginx.org/InstallOptions
 RUN mkdir /var/log/nginx \
@@ -51,6 +52,6 @@ COPY resources/configuration/ /resources/configuration/
 COPY resources/release_note/ /resources/release_note/
 COPY resources/scripts/ /resources/scripts/
 COPY templates/configuration/ /templates/configuration/
-RUN chmod +x /resources/scripts/entrypoint.sh
+RUN chmod +x /resources/scripts/*
 
 CMD ["/resources/scripts/entrypoint.sh"]
