@@ -8,28 +8,28 @@
                         "title": "jenkins",
                         "img": "img/jenkins.png",
                         "description": "Continuous Integration & Automation Server",
-                        "link": "/jenkins"
+                        "link": "/jenkins/"
                     },
                     {
                         "id": "gerrit",
                         "title": "gerrit",
                         "img": "img/gerrit.jpg",
                         "description": "Git Repository Management & Code Review Tool",
-                        "link": "/gerrit"
+                        "link": "/gerrit/"
                     },
                     {
                         "id": "sonar",
                         "title": "sonar",
                         "img": "img/sonar.png",
                         "description": "Static Code Analysis",
-                        "link": "/sonar"
+                        "link": "/sonar/"
                     },
                     {
                         "id": "nexus",
                         "title": "nexus",
                         "img": "img/nexus.png",
                         "description": "Software Repository Manager",
-                        "link": "/nexus"
+                        "link": "/nexus/"
                     },
                     {
                         "id": "kibana",
