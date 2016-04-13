@@ -55,7 +55,21 @@
                         "img": "img/sensu.png",
                         "description": "Monitoring",
                         "link": "/sensu/"
-                    }                    
+                    },
+                    {
+                        "id": "ldap-ltb",
+                        "title": "ltb",
+                        "img": "img/ltb.png",
+                        "description": "Application that allows users to change their password in an LDAP directory",
+                        "link": "/ldap-ltb/"
+                    },
+                    {
+                        "id": "ldap-phpadmin",
+                        "title": "phpldapadmin",
+                        "img": "img/phpldapadmin.png",
+                        "description": "Browser to manage your LDAP server",
+                        "link": "/ldap-phpadmin/"
+                    }
                 ]
             }
         ],
