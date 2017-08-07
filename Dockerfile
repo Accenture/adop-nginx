@@ -22,6 +22,7 @@ RUN apt-get update \
 # See http://wiki.nginx.org/InstallOptions
 RUN mkdir /var/log/nginx \
     && mkdir -p /etc/nginx/sites-enabled \
+    && mkdir -p /usr/share/nginx/html \
     && cd ~ \
     && git clone https://github.com/kvspb/nginx-auth-ldap.git \
     && git clone https://github.com/nginx/nginx.git \
