@@ -1,6 +1,10 @@
-#Supported tags and respective Dockerfile links
+# Supported tags and respective Dockerfile links
 
 - [`0.1.0`, `0.1.0` (*0.1.0/Dockerfile*)](https://github.com/Accenture/adop-nginx/blob/master/Dockerfile.md)
+
+# Build Status
+
+[![Build Status](https://travis-ci.org/Accenture/adop-nginx.svg?branch=master)](https://travis-ci.org/Accenture/adop-nginx)
 
 # What is adop-nginx?
 
