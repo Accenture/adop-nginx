@@ -2,7 +2,7 @@
 set -e
 
 cp -R /resources/configuration/* /etc/nginx/
-mkdir -p /usr/share/nginx/html/ && cp -R /resources/release_note/* /usr/share/nginx/html/
+cp -R /resources/release_note/* /usr/share/nginx/html/
 
 # Auto populate the release note page with the blueprints
 /resources/scripts/reload_release_notes.sh
