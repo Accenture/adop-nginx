@@ -19,11 +19,11 @@ adop-nginx provides Nginx with LDAP support. Nginx is a high performance reverse
       $ docker run --name <your-container-name> -dt \
         -v /resources/configuration/:/etc/nginx/:ro \
         -v /resources/release_note:/usr/share/nginx/html/:ro \
-        -v /var/log:/var/log 
+        -v /var/log:/var/log
         -p 443:443 \
         -p 80:80 \
         accenture/adop-nginx:VERSION
-        
+
 ## Configuration
 
 The nginx configuration is externalised and stored the 'resources' directory.
@@ -31,11 +31,12 @@ The nginx configuration is externalised and stored the 'resources' directory.
 Runtime configuration can be provided using environment variables:
 
 * LDAP_SERVER, the LDPA URI, i.e. ldap-host:389
+* LDAP_PROTOCOL, allowed values ldap(default)/ldaps
 * LDAP_USERNAME, the LDAP BASE_DN
-* LDAP_PASSWORD, the password to use connecting to LDAP service using the provided username 
+* LDAP_PASSWORD, the password to use connecting to LDAP service using the provided username
 * LDAP_USER_BASE_DN, the LDAP user BASE_DN
-* LDAP_GROUP_ATTRIBUTE, LDAP object field attribute the defines group appartenence. 
-* LDAP_USER_ID_ATTRIBUTE, LDAP object field attribute the defines the user identifier. 
+* LDAP_GROUP_ATTRIBUTE, LDAP object field attribute the defines group appartenence.
+* LDAP_USER_ID_ATTRIBUTE, LDAP object field attribute the defines the user identifier.
 * LDAP_USER_OBJECT_CLASS, LDAP user object class
 
 # License
@@ -49,7 +50,7 @@ Support for older versions (down to 1.6) is provided on a best-effort basis.
 # User feedback
 
 ## Documentation
-Documentation for this image is available in the [Nginx documentation page](http://nginx.org/en/docs/). 
+Documentation for this image is available in the [Nginx documentation page](http://nginx.org/en/docs/).
 Additional documentaion can be found under the [`docker-library/docs` GitHub repo](https://github.com/docker-library/docs). Be sure to familiarize yourself with the [repository's `README.md` file](https://github.com/docker-library/docs/blob/master/README.md) before attempting a pull request.
 
 ## Issues
