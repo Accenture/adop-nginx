@@ -16,7 +16,7 @@
                         "img": "img/gitlab.png",
                         "description": "Git Repository Manager",
                         "link": "/gitlab/"
-                    }
+                    },
                     {
                         "id": "sonar",
                         "title": "sonar",
